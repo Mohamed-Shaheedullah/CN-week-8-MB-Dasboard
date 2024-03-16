@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div>
+        <h1>Staff List</h1>
+   
+        <hr> 
+        <!-- show a list of staff (READ) with status -->
+        <!-- megs_list is queried in views home and sent here in return statement, hence accessible -->
+        {% for my_staff in mega_list %}
+        <!-- my_task is a jinja var representing each task  -->
+            <p>{{my_staff.staff}}  
+                
+            {%  endfor %}
+    
+    </div>
+</body>
+
+</html>
