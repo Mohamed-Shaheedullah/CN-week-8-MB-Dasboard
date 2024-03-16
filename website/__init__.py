@@ -17,5 +17,7 @@ def create_app():
     from .models import Megabytes, read_excel_to_database 
     with app.app_context():
         db.create_all()
-        read_excel_to_database("mb_all.xlsx")
+        if app.debug: # REMOVE OR CHANGE WHEN DEPLOY********************
+            read_excel_to_database("mb_all.xlsx")
+
     return app
