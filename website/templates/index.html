@@ -5,22 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
-    <title>Todo App</title>
+    <title>Megabytes Dashboard</title>
 </head>
 
 <body>
     <div>
-        <h1>Staff List</h1>
-   
+        <h1>Dashboard</h1>
         <hr> 
-        <!-- show a list of staff (READ) with status -->
-        <!-- megs_list is queried in views home and sent here in return statement, hence accessible -->
-        {% for my_staff in mega_list %}
-        <!-- my_task is a jinja var representing each task  -->
-            <p>{{my_staff.staff}}  
-                
-            {%  endfor %}
-    
+        <p>Total revenue for week is {{total_cost}} </p> 
+        <p>Max sale during week was {{max_cost}}</p>   
+        {% for staff, total in staff_cost_sums %}
+            {{staff}}, {{total}}
+        {% endfor %}       
     </div>
 </body>
 
