@@ -18,6 +18,7 @@ def create_app():
     with app.app_context():
         db.create_all()
         if app.debug: # REMOVE OR CHANGE WHEN DEPLOY********************
+            # to recreate dbase comment above line and set debug=False in app.py
             read_excel_to_database("mb_all.xlsx")
 
     return app

@@ -23,11 +23,17 @@ def read_excel_to_database(file_path):
     df_db = pd.read_excel(file_path, engine='openpyxl')
     df_db.rename(columns={'Unnamed: 0': 'mb_index'}, inplace=True)
 
-    # Iterate over DataFrame rows
+    # Write directly to the database, not working
+    # https://stackoverflow.com/questions/30631325/writing-to-mysql-database-with-pandas-using-sqlalchemy-to-sql
+    # df_db.to_sql('megabytes', con=db.session.get_bind(), if_exists='append', index=False)  
+
+    # Iterate over DataFrame rows, working
     for index, row in df_db.iterrows():
         # Create a new Megabyte instance
         from .models import Megabytes
         megabyte = Megabytes(
+            # assign db var to df value for each row
+            # ( mb_index is auto gen PK)
             transaction_id = row["Transaction ID"],
             staff = row["Staff"],
             transaction_type = row["Transaction Type"],
